@@ -1,8 +1,31 @@
 #include <stdio.h>
+#include <stdbool.h>
+
+int isPrime(int number) {
+    if (number <= 1) {
+        return 0;
+    }
+
+    if (number <= 3) {
+        return 1; 
+    }
+
+    if (number % 2 == 0 || number % 3 == 0) {
+        return 0; 
+    }
+
+    for (int i = 5; i * i <= number; i += 6) {
+        if (number % i == 0 || number % (i + 2) == 0) {
+            return 0; 
+        }
+    }
+
+    return 1; 
+}
 
 int main()
 {
-    int nums[10];
+    int nums[10], num;
     for (int i = 0; i < 10; i++)
     {
         printf("Informe o %d numero: ", i + 1);
@@ -11,13 +34,10 @@ int main()
 
     for (int i = 0; i < 10; i++)
     {
-        if ((nums[i] % 2) == 0)
+        num = nums[i];
+        if (isPrime(num))
         {
-            continue;
-        }
-        else
-        {
-            printf("Impar - %d\nPosicao - %d\n", nums[i], i + 1);
+            printf("%d e um numero primo.\n", num);
         }
     }
 
