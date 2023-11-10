@@ -1,41 +1,30 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <string.h>
 
-void shuffle(int array[], int size) {
-    for (int i = size - 1; i > 0; i--) {
-        int j = rand() % (i + 1);
-        // Troca array[i] e array[j]
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-}
+int main()
+{
+    char str1[5], str2[5];
+    int len, j = 0;
 
-int main() {
-    int bingo[5][5];
-    srand(time(NULL));
+    scanf("%s", str1);
+    len = strlen(str1);
+    printf("%s\n", str1);
 
-    // Inicialize um array de números de 1 a 75
-    int numerosPossiveis[75];
-    for (int i = 0; i < 75; i++) {
-        numerosPossiveis[i] = i + 1;
+    for (int i = len - 1; i >= 0; i--)
+    {
+        str2[j] = str1[i];
+        j++;
     }
 
-    shuffle(numerosPossiveis, 75); // Embaralhe os números
+    printf("%s\n", str2);
 
-    int numeroAtual = 0;
-    for (int l = 0; l < 5; l++) {
-        for (int c = 0; c < 5; c++) {
-            bingo[l][c] = numerosPossiveis[numeroAtual++];
-        }
+    if (strcmp(str2, str1) == 0)
+    {
+        printf("Sao palindromos!");
     }
-
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-            printf("%2d|", bingo[i][j]); // Use %2d para imprimir números com dois dígitos alinhados
-        }
-        printf("\n");
+    else
+    {
+        printf("Nao sao palindromos!");
     }
 
     return 0;
