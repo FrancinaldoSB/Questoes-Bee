@@ -11,5 +11,6 @@ int main() {
     X = A + B;
 
     printf("X = %d\n", X);
+    printf("Ola Mundo!\n");
     return 0;
 }
